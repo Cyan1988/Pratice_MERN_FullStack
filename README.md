@@ -1,5 +1,3 @@
-# Tech Stack：
-
 ## Front-End:
 
 1. React

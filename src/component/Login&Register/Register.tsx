@@ -19,6 +19,7 @@ function Register() {
     try {
       await axios.post("/register", inputs);
       alert("Register successfully.");
+      navigate("/user");
     } catch (err: any) {
       console.log(err);
     }

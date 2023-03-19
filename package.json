@@ -2,7 +2,7 @@
   "name": "brompton-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cyan1988.github.io/brompton-website/",
+  "homepage": "",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
     "@headlessui/react": "^1.7.9",

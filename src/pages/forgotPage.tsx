@@ -1,22 +1,16 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import Forgot from "../component/Login&Register/Forgot";
 
-function UserPage() {
-  const { currentUser, logout } = useContext(AuthContext);
+export default function forgotPage() {
   return (
     <>
       <div className="bg-cyan-500 py-4 text-slate-50 text-[2rem] font-sans font-bold text-center">
         WELCOME TO BROMPTON
       </div>
-      <div className="bg-slate-100 py-8 text-center">
-        <div className="text-[3rem]">
-          Welcome, {currentUser?.email.split("@")[0]}!
-        </div>
-        <div className="text-[1.5rem]" onClick={logout}>
-          <Link to="/">Log Out</Link>
-        </div>
+
+      <div className="flex justify-center bg-slate-100 border-b-2 md:border-b-0 md:border-r-2 p-8">
+        <Forgot />
       </div>
+
       <div className="bg-slate-100 py-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,5 +36,3 @@ function UserPage() {
     </>
   );
 }
-
-export default UserPage;

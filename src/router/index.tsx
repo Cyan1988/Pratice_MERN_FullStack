@@ -41,6 +41,14 @@ export default function BpRouter() {
       element: LazyLoad("productsPage"),
     },
     {
+      path: "/login",
+      element: LazyLoad("loginPage"),
+    },
+    {
+      path: "/forgot",
+      element: LazyLoad("forgotPage"),
+    },
+    {
       path: "/user",
       element: LazyLoad("userPage"),
     },

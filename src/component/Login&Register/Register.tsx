@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Input } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
-  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
+    email: String,
+    password: String,
   });
 
   const handleChange = (e: any) => {
@@ -20,9 +19,8 @@ function Register() {
     try {
       await axios.post("/register", inputs);
       alert("Register successfully.");
-      navigate("/user");
     } catch (err: any) {
-      console.log(err);
+      alert(err.response.data);
     }
   };
 
@@ -72,7 +70,6 @@ function Register() {
         </button>
         <button
           className="border-solid bg-gray-900 text-slate-100 border-gray-900 border-2 rounded-md px-2 py-1"
-          type="submit"
           onClick={handleSubmit}
         >
           SIGN UP

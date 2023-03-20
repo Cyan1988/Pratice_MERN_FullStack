@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks";
 import Cart from "./Cart";
 import SearchBar from "./SearchBar";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header: React.FC = () => {
   // 導航欄開關
@@ -27,6 +28,9 @@ const Header: React.FC = () => {
   const getSetSearchShow = (searchShow: boolean) => {
     setSearchShow(!searchShow);
   };
+
+  // context状态
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <div className="h-[4.3rem]">
@@ -135,16 +139,21 @@ const Header: React.FC = () => {
               <span className="text-sm md:hidden">SEARCH</span>
             </li>
             {/* 登錄 */}
-            <Link to="/user">
-              <li>
-                <img
-                  className="inline-block h-7 pr-1"
-                  src={require("../../icons/account.png")}
-                  alt="account"
-                ></img>
-                <span className="text-sm md:text-base">LOGIN</span>
-              </li>
-            </Link>
+
+            <li>
+              <img
+                className="inline-block h-7 pr-1"
+                src={require("../../icons/account.png")}
+                alt="account"
+              ></img>
+              <span className="text-sm md:text-base">
+                {currentUser ? (
+                  <Link to="/user">{currentUser?.email.split("@")[0]}</Link>
+                ) : (
+                  <Link to="/login">Log in</Link>
+                )}
+              </span>
+            </li>
           </ul>
         </div>
 

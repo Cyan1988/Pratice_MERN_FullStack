@@ -1,20 +1,19 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import React from "react";
+import Login from "../component/Login&Register/Login";
+import Register from "../component/Login&Register/Register";
 
-function UserPage() {
-  const { currentUser, logout } = useContext(AuthContext);
+function userPage() {
   return (
     <>
       <div className="bg-cyan-500 py-4 text-slate-50 text-[2rem] font-sans font-bold text-center">
         WELCOME TO BROMPTON
       </div>
-      <div className="bg-slate-100 py-8 text-center">
-        <div className="text-[3rem]">
-          Welcome, {currentUser?.email.split("@")[0]}!
+      <div className="grid md:grid-cols-2 bg-slate-100">
+        <div className="border-b-2 md:border-b-0 md:border-r-2 p-16">
+          <Login />
         </div>
-        <div className="text-[1.5rem]" onClick={logout}>
-          <Link to="/">Log Out</Link>
+        <div className="p-16">
+          <Register />
         </div>
       </div>
       <div className="bg-slate-100 py-8">
@@ -43,4 +42,4 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+export default userPage;

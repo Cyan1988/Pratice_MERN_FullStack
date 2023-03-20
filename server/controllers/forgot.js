@@ -3,18 +3,15 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { createError } from "../middleware/error.js";
 
-export const login = async (req, res, next) => {
+export const forgot = async (req, res, next) => {
   try {
-    const account = await Account.findOne({
-      email: req.body.email,
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt);
+
+    const account = await Account.findOneAndUpdate(req.body.email, {
+      $set: { password: hash },
     });
     if (!account) return next(createError(404, "wrong account"));
-
-    const isPasswordCorrect = await bcrypt.compare(
-      req.body.password,
-      account.password
-    );
-    if (!isPasswordCorrect) return next(createError(400, "wrong password"));
 
     const token = jwt.sign({ id: account._id }, process.env.JWT);
 
@@ -26,7 +23,7 @@ export const login = async (req, res, next) => {
       })
       .status(200)
       .json({ ...otherInformation });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };

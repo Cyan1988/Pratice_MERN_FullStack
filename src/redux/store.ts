@@ -2,6 +2,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filterReducer from "./feature/filterSlice";
 import cartReducer from "./feature/cartSlice";
+
 // redux persist 數據持久化
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -11,7 +12,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["cart"],
+  whitelist: ["cart, user"],
 };
 
 // persist 需要使用combineReducer

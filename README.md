@@ -1,8 +1,8 @@
 ## Todo List
 
-- [ ] Form validation;
-- [ ] Login;
-- [ ] Products Database Transformation;
+- [x] Basic login and registration functions
+- [ ] Form verification
+- [ ] Products Database
 
 ## Front-End:
 

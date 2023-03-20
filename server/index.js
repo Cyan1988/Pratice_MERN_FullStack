@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import registerRoute from "./routes/register.js";
-import loginRoute from "./routes/login.js";
+import authRoute from "./routes/auth.js";
+import forgotRoute from "./routes/forgot.js";
 
 const app = express();
 dotenv.config();
@@ -29,7 +30,8 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use("/api", registerRoute);
-app.use("/api", loginRoute);
+app.use("/api", authRoute);
+app.use("/api", forgotRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

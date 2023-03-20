@@ -16,6 +16,7 @@ function Register() {
   };
 
   const handleSubmit = async (e: any) => {
+    e.preventDefault();
     try {
       await axios.post("/register", inputs);
       alert("Register successfully.");
@@ -38,7 +39,6 @@ function Register() {
           size="large"
           placeholder="E-mail"
           prefix={<UserOutlined />}
-          required
           className="max-w-[25rem]"
           onChange={handleChange}
         />
@@ -49,7 +49,6 @@ function Register() {
           name="password"
           size="large"
           placeholder="input password"
-          required
           className="max-w-[25rem]"
           onChange={handleChange}
         />

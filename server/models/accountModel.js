@@ -12,6 +12,10 @@ const accountSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+
+    subscribe: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

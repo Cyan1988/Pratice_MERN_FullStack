@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
@@ -32,10 +32,27 @@ function Forgot() {
   };
 
   return (
-    <div>
-      <form className="font-sans space-y-6 mx-auto">
+    <>
+      <Form
+        name="forgot"
+        scrollToFirstError
+        onFinish={handleSubmit}
+        className="font-sans space-y-6 mx-auto"
+      >
         <div className="text-[1.75rem] font-bold">Forgot Password? </div>
-        <div>
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              type: "email",
+              message: "The input is not valid E-mail",
+            },
+            {
+              required: true,
+              message: "Please input your E-mail",
+            },
+          ]}
+        >
           <Input
             type="email"
             name="email"
@@ -45,8 +62,21 @@ function Forgot() {
             onChange={handleChange}
             className="w-[24rem]"
           />
-        </div>
-        <div>
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password",
+            },
+            {
+              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/,
+              message:
+                "8 - 16 characters, must include upper and lower case letters and numbers",
+            },
+          ]}
+        >
           <Input.Password
             type="password"
             name="password"
@@ -55,8 +85,21 @@ function Forgot() {
             onChange={handleChange}
             className="w-[24rem]"
           />
-        </div>
-        <div>
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password",
+            },
+            {
+              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/,
+              message:
+                "8 - 16 characters, must include upper and lower case letters and numbers",
+            },
+          ]}
+        >
           <Input.Password
             type="password"
             name="repeatPassword"
@@ -65,17 +108,17 @@ function Forgot() {
             onChange={handleChange}
             className="w-[24rem]"
           />
-        </div>
+        </Form.Item>
         <div>
           <button
             className="border-solid bg-gray-900 text-slate-100 border-gray-900 border-2 rounded-md px-2 py-1"
-            onClick={handleSubmit}
+            type="submit"
           >
             Change Password
           </button>
         </div>
-      </form>
-    </div>
+      </Form>
+    </>
   );
 }
 

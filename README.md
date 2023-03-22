@@ -1,8 +1,8 @@
 ## Todo List
 
 - [x] Basic login and registration functions
-- [ ] Form verification
-- [ ] Products Database
+- [x] Form verification
+- [ ] Rebuild Products Data by MongoDB
 
 ## Front-End:
 
